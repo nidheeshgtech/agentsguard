@@ -64,14 +64,14 @@ export function Hero() {
           </button>
         </div>
 
-        <div className="mt-12 sm:mt-16 md:mt-24 mb-12">
+        <div className="mt-12 sm:mt-16 md:mt-24 mb-4">
 
           <h4 className="text-1xl sm:text-3xl md:text-4xl mb-2" >Trust layer between intent and execution</h4>
 
         </div>
 
         <div
-          className="mt-12 sm:mt-16 md:mt-24 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 md:gap-8 max-w-5xl mx-auto animate-fade-in-up px-4"
+          className="mt-4 sm:mt-16 md:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 md:gap-8 max-w-5xl mx-auto animate-fade-in-up px-4"
           style={{ animationDelay: '0.4s' }}
         >
           <div
