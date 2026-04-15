@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { useState } from 'react';
-import logo from '../../imports/image-1.png';
+import logo from '../../imports/logo-agents_guard.png';
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
