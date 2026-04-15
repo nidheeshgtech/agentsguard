@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import logo from '../../imports/image-1.png';
+import logo from '../../imports/logo-agents_guard.png';
 
 export function Footer() {
   const sectionLinks = [
