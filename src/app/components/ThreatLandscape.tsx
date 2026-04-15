@@ -72,7 +72,7 @@ export function ThreatLandscape() {
         </ScrollReveal>
 
         {/* Tab Navigation - Pill-style segmented controls */}
-        <div className="flex justify-start sm:justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 max-w-[1200px] mx-auto px-4 overflow-x-auto scrollbar-hide pb-2">
+        <div className=" tab-mobile-item flex justify-start sm:justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 max-w-[1200px] mx-auto px-4 overflow-x-auto scrollbar-hide pb-2">
           {threats.map((threat, index) => (
             <button
               key={threat.title}
