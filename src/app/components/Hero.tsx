@@ -63,15 +63,15 @@ export function Hero() {
             Read the Brief →
           </button>
         </div>
-
+{/* 
         <div className="mt-12 sm:mt-16 md:mt-24 mb-4">
 
           <h4 className="text-1xl sm:text-3xl md:text-4xl mb-2" >Trust layer between intent and execution</h4>
 
-        </div>
+        </div> */}
 
         <div
-          className="mt-4 sm:mt-16 md:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 md:gap-8 max-w-5xl mx-auto animate-fade-in-up px-4"
+          className="mt-10 sm:mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 md:gap-8 max-w-5xl mx-auto animate-fade-in-up px-4"
           style={{ animationDelay: '0.4s' }}
         >
           <div
@@ -86,7 +86,7 @@ export function Hero() {
               <Shield className="card-hover-icon w-10 h-10 sm:w-12 sm:h-12" strokeWidth={1.5} style={{ color: '#8b5cf6' }} />
             </div>
             <div className="text-xs uppercase tracking-widest text-neutral-500 mb-2">Security</div>
-            <div className="text-sm sm:text-base md:text-lg text-white leading-tight">Deny-by-default enforcement</div>
+            <div className="text-sm sm:text-base md:text-lg text-white leading-tight">Trust layer between intent and execution</div>
           </div>
 
           <div
