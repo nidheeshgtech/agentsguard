@@ -119,6 +119,10 @@
   position: relative;
   cursor: pointer;
   transition: transform .18s, box-shadow .18s, border-color .18s;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ag-diagram .comp::after {
@@ -508,7 +512,7 @@
 }
 
 .ag-diagram .comp.tok-step .comp-title {
-  color: var(--purple-bright);
+  /* color: var(--purple-bright); */
   text-transform: uppercase;
   letter-spacing: .3px;
 }
