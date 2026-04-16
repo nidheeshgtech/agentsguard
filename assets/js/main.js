@@ -96,4 +96,46 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(s => sectionObserver.observe(s));
   }
 
+  /* 6. Diagram – Flow Row Highlight & Click Ripple
+  ------------------------------------------------------------ */
+  const diagram = document.querySelector('.ag-diagram');
+
+  if (diagram) {
+    // Highlight all comp boxes in a row on hover
+    diagram.querySelectorAll('.frow').forEach(row => {
+      const boxes = row.querySelectorAll('.comp');
+      row.addEventListener('mouseenter', () => {
+        boxes.forEach((b, i) => setTimeout(() => b.style.borderColor = '#5B00D6', i * 60));
+      });
+      row.addEventListener('mouseleave', () => {
+        boxes.forEach(b => b.style.borderColor = '');
+      });
+    });
+
+    // Click ripple effect
+    diagram.querySelectorAll('.comp, .agent-card, .node-card, .de-card, .z3-node').forEach(el => {
+      el.addEventListener('click', e => {
+        const r = document.createElement('span');
+        r.style.cssText = `
+          position:absolute;border-radius:50%;pointer-events:none;
+          background:rgba(91,0,214,.18);transform:scale(0);
+          animation:agRipple .55s ease-out;
+          width:56px;height:56px;margin:-28px;
+          left:${e.offsetX}px;top:${e.offsetY}px;
+        `;
+        el.style.position = 'relative';
+        el.appendChild(r);
+        setTimeout(() => r.remove(), 580);
+      });
+    });
+
+    // Inject ripple keyframe once
+    if (!document.getElementById('ag-ripple-style')) {
+      const s = document.createElement('style');
+      s.id = 'ag-ripple-style';
+      s.textContent = '@keyframes agRipple { to { transform:scale(4); opacity:0; } }';
+      document.head.appendChild(s);
+    }
+  }
+
 });

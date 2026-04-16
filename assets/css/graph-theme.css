@@ -1,0 +1,1108 @@
+/* ============================================================
+   AgentsGuard – Diagram / Graph Theme
+   graph-theme.css
+   (No reset CSS – layout & component styles only)
+   ============================================================ */
+
+/* ─── CSS Variables ──────────────────────────────────────── */
+.ag-diagram {
+  --bg: #0D0B1A;
+  --bg2: #110E22;
+  --surface: #1C1838;
+  --surface2: #241E42;
+  --surface3: #2C2650;
+  --purple: #8B5CF6;
+  --purple-bright: #A78BFA;
+  --purple-dim: rgba(139, 92, 246, 0.18);
+  --purple-glow: rgba(139, 92, 246, 0.35);
+  --border-base: rgba(139, 92, 246, 0.22);
+  --text: #EDE9F8;
+  --text-dim: #9B91B8;
+  --text-muted: #6B6187;
+
+  /* Zone 1 – purple */
+  --z1-bg: rgba(139, 92, 246, 0.05);
+  --z1-border: #7C3AED;
+  --z1-txt: #A78BFA;
+  --z1-glow: rgba(139, 92, 246, 0.2);
+
+  /* Zone 2 – purple (slightly lighter) */
+  --z2-bg: rgba(139, 92, 246, 0.04);
+  --z2-border: #8B5CF6;
+  --z2-txt: #C4B5FD;
+  --z2-glow: rgba(139, 92, 246, 0.18);
+
+  /* Zone 2-A – rose (keep danger red) */
+  --za-bg: rgba(248, 113, 113, 0.06);
+  --za-border: #F87171;
+  --za-txt: #FCA5A5;
+  --za-glow: rgba(248, 113, 113, 0.22);
+
+  /* Zone 2-B – violet */
+  --zb-bg: rgba(167, 139, 250, 0.07);
+  --zb-border: #A78BFA;
+  --zb-txt: #C4B5FD;
+
+  /* Zone 3 – deep purple */
+  --z3-bg: rgba(109, 40, 217, 0.06);
+  --z3-border: #6D28D9;
+  --z3-txt: #C4B5FD;
+  --z3-glow: rgba(109, 40, 217, 0.2);
+
+  --accent-red: #F87171;
+  --r: 8px;
+}
+
+/* ─── Wrapper ────────────────────────────────────────────── */
+.graph-wrapper {
+  margin: 3rem 0;
+  overflow-x: auto;
+}
+
+.ag-diagram {
+  max-width: 100%;
+  margin: 0 auto;
+  background: var(--bg2);
+  border-radius: 29px;
+  overflow: hidden;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.1),
+    0 8px 40px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(139, 92, 246, 0.08);
+
+  color: var(--text);
+}
+
+/* ─── Zone shared ────────────────────────────────────────── */
+.ag-diagram .zone-wrap {
+  padding: 0 14px 14px;
+}
+
+.ag-diagram .zone-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7px 12px 6px;
+  border-radius: 8px 8px 0 0;
+  margin: 0 -1px;
+  background: var(--surface2);
+  border-bottom: 1px solid;
+}
+
+.ag-diagram .zone-title {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+
+.ag-diagram .zone-sub {
+  font-size: 10px;
+  font-weight: 400;
+  opacity: .65;
+  margin-top: 1px;
+}
+
+.ag-diagram .zone-box {
+  border: 1.5px solid;
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+/* ─── Component box ──────────────────────────────────────── */
+.ag-diagram .comp {
+  background: var(--surface);
+  border: 1.5px solid var(--border-base);
+  border-radius: var(--r);
+  padding: 6px 8px 10px;
+  position: relative;
+  cursor: pointer;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+
+.ag-diagram .comp::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #673ab7;
+  border-radius: 0 0 6px 6px;
+  opacity: 0.7;
+}
+
+.ag-diagram .comp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px var(--purple-glow), 0 0 0 1px var(--purple);
+  border-color: var(--purple);
+  z-index: 10;
+}
+
+.ag-diagram .comp:hover::after {
+  background: var(--purple);
+  opacity: 1;
+}
+
+.ag-diagram .comp-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background: var(--surface3);
+  color: var(--text);
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 400;
+  border: 1px solid #673AB7;
+  line-height: 1;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.ag-diagram .comp-title {
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.2;
+  margin-top: 10px;
+  color: var(--text);
+}
+
+.ag-diagram .comp-sub {
+  font-size: 8px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* Security Reasoner highlight */
+.ag-diagram .comp.highlight {
+  border-color: var(--accent-red);
+  border-width: 2px;
+  /* box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.22), 0 0 12px rgba(248, 113, 113, 0.15); */
+}
+
+.ag-diagram .comp.highlight .comp-step {
+  background: #2c2650;
+  color: #fff;
+}
+
+/* ─── Arrow ──────────────────────────────────────────────── */
+.ag-diagram .arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ZONE 1
+   ════════════════════════════════════════════════════════════ */
+.ag-diagram .z1-box {
+  border-color: rgb(66 51 114);
+  margin: 14px 0px;
+  box-shadow: 0 0 20px var(--z1-glow);
+}
+
+.ag-diagram .z1-header {
+  background: linear-gradient(90deg, rgb(26 18 54) 0%, #391b6e 100%);
+  border-bottom-color: rgb(66 39 114);
+  color: #fff;
+}
+
+.ag-diagram .z1-body {
+  background: var(--z1-bg);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.ag-diagram .z1-sidetag {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--z1-txt);
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  white-space: nowrap;
+  opacity: .8;
+}
+
+.ag-diagram .z1-agents {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ag-diagram .agent-card {
+  background: var(--surface);
+  border: 1.5px solid rgb(82 58 126);
+  border-radius: var(--r);
+  padding: 7px 9px;
+  min-width: 90px;
+  cursor: pointer;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+
+.ag-diagram .agent-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px var(--z1-glow), 0 0 0 1px var(--z1-border);
+  border-color: var(--z1-border);
+}
+
+.ag-diagram .ac-name {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--z1-txt);
+  margin-bottom: 4px;
+}
+
+.ag-diagram .ac-list {
+  font-size: 7.5px;
+  color: var(--text-dim);
+  line-height: 1.55;
+  list-style: disc;
+  padding-left: 11px;
+}
+
+.ag-diagram .ellipsis-box {
+  background: var(--surface);
+  border: 1.5px dashed rgba(139, 92, 246, 0.4);
+  border-radius: var(--r);
+  padding: 7px 10px;
+  font-size: 18px;
+  color: var(--z1-txt);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  opacity: .7;
+}
+
+.ag-diagram .z1-sep {
+  width: 2px;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: linear-gradient(to bottom,
+      transparent 5%,
+      rgba(139, 92, 246, 0.5) 30%,
+      rgba(139, 92, 246, 0.5) 70%,
+      transparent 95%);
+  margin: 0 3px;
+}
+
+.ag-diagram .z1-big-arrow {
+  font-size: 22px;
+  color: var(--z1-txt);
+  flex-shrink: 0;
+  line-height: 1;
+  opacity: .8;
+}
+
+.ag-diagram .z1-nodes {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ag-diagram .node-card {
+  flex: 1;
+  background: var(--surface);
+  border: 1.5px solid rgba(139, 92, 246, 0.35);
+  border-radius: var(--r);
+  padding: 7px 5px;
+  text-align: center;
+  cursor: pointer;
+  min-width: 0;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+
+.ag-diagram .node-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px var(--z1-glow), 0 0 0 1px var(--z1-border);
+  border-color: var(--z1-border);
+}
+
+.ag-diagram .nc-name {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.ag-diagram .nc-sub {
+  font-size: 7.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ZONE 2 + RIGHT PANEL
+   ════════════════════════════════════════════════════════════ */
+.ag-diagram .mid-row {
+  display: flex;
+  gap: 12px;
+  margin: 0 14px;
+  align-items: stretch;
+}
+
+.ag-diagram .z2-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.ag-diagram .z2-box {
+  border-color: rgb(78 57 132);
+  box-shadow: 0 0 20px rgb(42 21 80);
+}
+
+.ag-diagram .z2-header {
+  background: linear-gradient(90deg, rgb(26 18 54) 0%, #391b6e 100%);
+  border-bottom-color: rgb(86 49 153);
+  color: white;
+}
+
+.ag-diagram .z2-body {
+  background: var(--z2-bg);
+  padding: 4px 12px 14px;
+  /* top reduced — frow padding-top handles circle spacing */
+}
+
+/* flow row */
+.ag-diagram .frow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 14px;
+  padding-top: 20px;
+  /* space for the overflowing comp-step circles */
+}
+
+.ag-diagram .frow:last-child {
+  margin-bottom: 0;
+}
+
+.ag-diagram .flow-origin {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 32px;
+}
+
+.ag-diagram .fdot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-weight: 400;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.ag-diagram .fdot.cp {
+  background: rgba(139, 92, 246, 0.9);
+  border: 2px solid var(--purple-bright);
+  animation: agPulseP 2.4s infinite;
+}
+
+.ag-diagram .fdot.dp {
+  background: rgba(109, 40, 217, 0.85);
+  border: 2px solid var(--z1-border);
+  animation: agPulseP2 2.4s infinite;
+}
+
+.ag-diagram .flabel {
+  font-size: 7.5px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.ag-diagram .flabel.cp {
+  color: var(--z2-txt);
+}
+
+.ag-diagram .flabel.dp {
+  color: var(--z1-txt);
+}
+
+.ag-diagram .fpipe {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ag-diagram .fpipe .comp {
+  flex: 1;
+  min-width: 0;
+  border-color: rgb(82 49 147);
+}
+
+.ag-diagram .fpipe .comp.dp-style {
+  border-color: rgb(89 43 161 / 50%);
+}
+
+.ag-diagram .fpipe .comp.dp-style::after {
+  background: #6D28D9;
+  opacity: .7;
+}
+
+.ag-diagram .fpipe .comp.dp-style .comp-step {
+  background: rgb(44 38 80) !important;
+  color: #fff;
+}
+
+.ag-diagram .farrow {
+  flex-shrink: 0;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ag-diagram .farrow svg {
+  display: block;
+}
+
+/* Tokenization – Step 6 */
+.ag-diagram .comp.tok-step {
+  background: linear-gradient(160deg, rgba(139, 92, 246, 0.2) 0%, rgba(109, 40, 217, 0.15) 100%);
+  border-color: rgba(139, 92, 246, 0.5);
+  border-width: 2px;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.2);
+}
+
+.ag-diagram .comp.tok-step::after {
+  background: var(--purple);
+  opacity: .8;
+}
+
+.ag-diagram .comp.tok-step .comp-step {
+  background: var(--purple);
+  color: #fff;
+  border-color: var(--bg2);
+}
+
+.ag-diagram .comp.tok-step .comp-title {
+  color: var(--purple-bright);
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+
+.ag-diagram .comp.tok-step .comp-sub {
+  color: var(--text-dim);
+}
+
+/* ── Right Panel ── */
+.ag-diagram .rpanel {
+  flex-shrink: 0;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Zone 2-A */
+.ag-diagram .za-box {
+  border-color: rgba(248, 113, 113, 0.4);
+  flex: 1;
+  box-shadow: 0 0 18px var(--za-glow);
+}
+
+.ag-diagram .za-header {
+  background: linear-gradient(90deg, rgba(248, 113, 113, 0.18) 0%, rgba(252, 165, 165, 0.1) 100%);
+  border-bottom-color: rgba(248, 113, 113, 0.3);
+  color: var(--za-txt);
+}
+
+.ag-diagram .za-body {
+  background: var(--za-bg);
+  padding: 10px;
+}
+
+.ag-diagram .de-title {
+  font-size: 9px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  color: var(--za-txt);
+  margin-bottom: 7px;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed rgba(248, 113, 113, 0.3);
+}
+
+.ag-diagram .de-grid {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.ag-diagram .de-card {
+  flex: 1;
+  background: var(--surface);
+  border: 1.5px solid rgba(248, 113, 113, 0.3);
+  border-radius: var(--r);
+  padding: 7px 3px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+
+.ag-diagram .de-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 14px var(--za-glow), 0 0 0 1px var(--za-border);
+  border-color: var(--za-border);
+}
+
+.ag-diagram .de-icon {
+  font-size: 15px;
+  margin-bottom: 3px;
+  display: block;
+}
+
+.ag-diagram .de-name {
+  font-size: 7.5px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.ag-diagram .emg-btn {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.85), rgba(220, 38, 38, 0.9));
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 6px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  box-shadow: 0 2px 12px rgba(248, 113, 113, 0.3);
+  transition: box-shadow .18s, transform .18s;
+}
+
+.ag-diagram .emg-btn:hover {
+  box-shadow: 0 4px 20px rgba(248, 113, 113, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Zone 2-B */
+.ag-diagram .zb-box {
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+.ag-diagram .zb-header {
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0.18) 0%, rgba(196, 181, 253, 0.1) 100%);
+  border-bottom-color: rgba(167, 139, 250, 0.3);
+  color: var(--zb-txt);
+}
+
+.ag-diagram .zb-body {
+  background: var(--zb-bg);
+  padding: 9px 10px;
+}
+
+.ag-diagram .artifact-btn {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.25), rgba(139, 92, 246, 0.3));
+  color: var(--zb-txt);
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  border-radius: 6px;
+  padding: 8px 8px;
+  font-size: 8.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.2);
+  transition: box-shadow .18s, transform .18s;
+}
+
+.ag-diagram .artifact-btn:hover {
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ZONE 3
+   ════════════════════════════════════════════════════════════ */
+.ag-diagram .z3-box {
+  border-color: rgba(109, 40, 217, 0.45);
+  margin: 12px 14px 14px;
+  box-shadow: 0 0 20px var(--z3-glow);
+}
+
+.ag-diagram .z3-header {
+  background: linear-gradient(90deg, rgb(26 18 54) 0%, #391b6e 100%);
+  border-bottom-color: rgba(139, 92, 246, 0.4);
+  color: #fff;
+}
+
+.ag-diagram .z3-body {
+  background: var(--z3-bg);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ag-diagram .z3-sidetag {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--z3-txt);
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  opacity: .8;
+}
+
+.ag-diagram .z3-groups {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.ag-diagram .z3-group {
+  flex: 1;
+  background: var(--surface);
+  border: 1.5px solid rgba(109, 40, 217, 0.35);
+  border-radius: var(--r);
+  padding: 8px;
+}
+
+.ag-diagram .z3g-title {
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--z3-txt);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.ag-diagram .z3-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+
+.ag-diagram .z3-node {
+  background: rgba(109, 40, 217, 0.1);
+  border: 1.5px solid rgba(139, 92, 246, 0.35);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--z3-txt);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .13s, color .13s, border-color .13s, transform .13s;
+}
+
+.ag-diagram .z3-node:hover {
+  background: var(--purple);
+  color: #fff;
+  border-color: var(--purple);
+  transform: translateY(-1px);
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.ag-diagram .ag-footer {
+  padding: 8px 22px;
+  background: var(--surface);
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ag-diagram .footer-brand {
+  font-size: 9.5px;
+  font-weight: 400;
+  color: var(--purple-bright);
+}
+
+.ag-diagram .footer-conf {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--accent-red);
+  opacity: .85;
+}
+
+/* ── Animations ──────────────────────────────────────────── */
+@keyframes agPulseP {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.6);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(139, 92, 246, 0);
+  }
+}
+
+@keyframes agPulseP2 {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(109, 40, 217, 0.6);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(109, 40, 217, 0);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE – TABLET  (≤ 1100px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+
+  .ag-diagram .z1-body {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ag-diagram .z1-agents {
+    flex-wrap: wrap;
+  }
+
+  .ag-diagram .ellipsis-box {
+    display: none;
+  }
+
+  .ag-diagram .z1-nodes {
+    flex-wrap: wrap;
+  }
+
+  .ag-diagram .node-card {
+    flex: 0 0 calc(33.3% - 4px);
+  }
+
+  /* Stack Zone 2 and right panel vertically */
+  .ag-diagram .mid-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ag-diagram .rpanel {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .ag-diagram .za-box,
+  .ag-diagram .zb-box {
+    flex: 1;
+  }
+
+  .ag-diagram .z3-groups {
+    flex-wrap: wrap;
+  }
+
+  .ag-diagram .z3-group {
+    flex: 0 0 calc(50% - 4px);
+  }
+
+  /* Give fpipe more room by ensuring it scrolls if needed */
+  .ag-diagram .fpipe {
+    padding-bottom: 4px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE – MOBILE  (≤ 700px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+
+  .graph-wrapper {
+    margin: 1.5rem 0;
+  }
+
+  .ag-diagram .z1-box,
+  .ag-diagram .z3-box {
+    margin: 10px 0;
+  }
+
+  .ag-diagram .zone-wrap {
+    padding: 0 8px 8px;
+  }
+
+  .ag-diagram .mid-row {
+    margin: 0;
+  }
+
+  /* Zone 1 body: column layout */
+  .ag-diagram .z1-body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 8px;
+  }
+
+  /* Zone headers */
+  .ag-diagram .zone-title {
+    font-size: 13px;
+  }
+
+  .ag-diagram .zone-sub {
+    font-size: 11px;
+  }
+
+  .ag-diagram .z1-sidetag {
+    writing-mode: horizontal-tb;
+    transform: none;
+    text-align: center;
+    font-size: 10px;
+    opacity: 0.6;
+  }
+
+  /* Agent cards: 2-column grid */
+  .ag-diagram .z1-agents {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .ag-diagram .agent-card {
+    min-width: unset;
+    padding: 8px;
+  }
+
+  .ag-diagram .ac-name {
+    font-size: 12px;
+  }
+
+  .ag-diagram .ac-list {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .ag-diagram .z1-sep,
+  .ag-diagram .ellipsis-box {
+    display: none;
+  }
+
+  .ag-diagram .z1-big-arrow {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  /* Node cards: 2-column grid */
+  .ag-diagram .z1-nodes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .ag-diagram .node-card {
+    flex: none;
+    padding: 8px 6px;
+  }
+
+  .ag-diagram .nc-name {
+    font-size: 12px;
+  }
+
+  /* Zone 2 flow: wrap, 1 comp per row */
+  .ag-diagram .frow {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 22px;
+  }
+
+  .ag-diagram .fpipe {
+    flex-wrap: wrap;
+    gap: 10px 6px;
+    padding-top: 4px;
+  }
+
+  .ag-diagram .fpipe .comp {
+    flex: 0 0 calc(50% - 3px);
+    min-width: 0;
+  }
+
+  .ag-diagram .farrow {
+    display: none;
+  }
+
+  /* Zone 2 flow */
+  .ag-diagram .comp-title {
+    font-size: 13px;
+  }
+
+  .ag-diagram .comp-sub {
+    font-size: 10px;
+  }
+
+  .ag-diagram .comp-step {
+    font-size: 12px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .ag-diagram .flow-origin {
+    width: 32px;
+  }
+
+  .ag-diagram .fdot {
+    width: 22px;
+    height: 22px;
+    font-size: 8px;
+  }
+
+  .ag-diagram .flabel {
+    font-size: 9px;
+  }
+
+  /* Right panels: stack */
+  .ag-diagram .rpanel {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ag-diagram .de-grid {
+    gap: 6px;
+  }
+
+  .ag-diagram .de-card {
+    flex: 1 1 calc(33.3% - 4px);
+    min-width: 0;
+  }
+
+  /* Break-glass & Auditing panels */
+  .ag-diagram .de-title {
+    font-size: 11px;
+  }
+
+  .ag-diagram .de-name {
+    font-size: 11px;
+  }
+
+  .ag-diagram .de-icon {
+    font-size: 18px;
+  }
+
+  .ag-diagram .emg-btn {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+
+  .ag-diagram .artifact-btn {
+    font-size: 12px;
+    padding: 12px 10px;
+    line-height: 1.6;
+  }
+
+  /* Zone 3 */
+  .ag-diagram .z3-body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .ag-diagram .z3-sidetag {
+    writing-mode: horizontal-tb;
+    transform: none;
+    text-align: center;
+    font-size: 10px;
+    opacity: 0.6;
+  }
+
+  .ag-diagram .z3-groups {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .ag-diagram .z3-group {
+    flex: none;
+    padding: 8px;
+  }
+
+  /* Zone 3 */
+  .ag-diagram .z3g-title {
+    font-size: 11px;
+  }
+
+  .ag-diagram .z3-node {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  /* Footer */
+  .ag-diagram .footer-brand {
+    font-size: 11px;
+  }
+
+  .ag-diagram .footer-conf {
+    font-size: 10px;
+  }
+
+  .ag-diagram .ag-footer {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    padding: 10px 12px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE – SMALL MOBILE  (≤ 420px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 420px) {
+
+  .ag-diagram .fpipe .comp {
+    flex: 0 0 100%;
+  }
+}
+
+.z2-wrap.z2-wrap--01 {
+  display: flex;
+}
+
+.z2-wrap.z2-wrap--01 .zone-box.z2-box {
+  flex: 1;
+}
+
+@media (max-width: 991px) {
+  .ag-diagram {
+    padding: 10px;
+  }
+
+}
