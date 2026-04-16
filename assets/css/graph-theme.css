@@ -506,9 +506,9 @@
 }
 
 .ag-diagram .comp.tok-step .comp-step {
-  background: var(--purple);
+  /* background: var(--purple); */
   color: #fff;
-  border-color: var(--bg2);
+  /* border-color: var(--bg2); */
 }
 
 .ag-diagram .comp.tok-step .comp-title {
