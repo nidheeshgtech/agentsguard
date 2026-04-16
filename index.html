@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AgentsGuard is the runtime security layer built for autonomous agents. Guard Every Agent. Secure Every Action." />
+  <title>AgentsGuard — The Control Plane for Agentic AI</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Background Orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="bg-orbs__orb bg-orbs__orb--hero"></div>
+    <div class="bg-orbs__orb bg-orbs__orb--bloom"></div>
+    <div class="bg-orbs__orb bg-orbs__orb--left"></div>
+    <div class="bg-orbs__orb bg-orbs__orb--right"></div>
+    <div class="bg-orbs__orb bg-orbs__orb--lower"></div>
+  </div>
+
+  <!-- ============================================================
+       Header
+  ============================================================ -->
+  <header class="header">
+    <nav class="header__nav" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="header__logo">
+        <img src="assets/images/logo-agents_guard.png" alt="AgentsGuard" />
+      </a>
+
+      <div class="header__links">
+        <a href="#security"      class="header__link">Security</a>
+        <a href="#architecture"  class="header__link">Architecture</a>
+        <a href="about.html"     class="header__link">About Us</a>
+      </div>
+
+      <div class="header__right">
+        <a href="#cta" class="btn-cta">Get Started</a>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+      <div class="mobile-menu__inner">
+        <a href="#security"     class="mobile-menu__link">Security</a>
+        <a href="#architecture" class="mobile-menu__link">Architecture</a>
+        <a href="about.html"    class="mobile-menu__link">About Us</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         Hero
+    ============================================================ -->
+    <section class="hero">
+      <div class="hero__inner">
+
+        <div class="anim-fade-in">
+          <div class="eyebrow eyebrow--ghost">Runtime Security for Agentic AI</div>
+        </div>
+
+        <h1 class="hero__title">
+          <span>AgentsGuard</span>
+          <span class="shimmer-text">The Control Plane</span>
+          <span class="muted">for Agentic AI</span>
+        </h1>
+
+        <p class="hero__body">
+          Software has evolved from merely responding to requests to acting and collaborating.
+          AgentsGuard is the runtime security layer built for autonomous agents.
+        </p>
+
+        <div class="hero__actions">
+          <button class="shiny-btn" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">
+            <div class="shiny-btn__ring shiny-btn__ring--blur"></div>
+            <div class="shiny-btn__ring shiny-btn__ring--solid"></div>
+            <span class="shiny-btn__inner">Request a Demo</span>
+          </button>
+          <button class="btn-ghost">Read the Brief →</button>
+        </div>
+
+        <div class="hero__stat-grid">
+          <!-- Security -->
+          <div class="stat-card">
+            <div class="stat-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="stat-card__label">Security</div>
+            <div class="stat-card__text">Trust layer between intent and execution</div>
+          </div>
+          <!-- Speed -->
+          <div class="stat-card">
+            <div class="stat-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <div class="stat-card__label">Speed</div>
+            <div class="stat-card__text">Machine-speed autonomous action</div>
+          </div>
+          <!-- Scale -->
+          <div class="stat-card">
+            <div class="stat-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"/>
+              </svg>
+            </div>
+            <div class="stat-card__label">Scale</div>
+            <div class="stat-card__text">Instant agent verification at run time</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         New Reality
+    ============================================================ -->
+    <section class="section" id="features">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="eyebrow">The New Reality</div>
+          <h2>AI Agents Are the New Workforce</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="reveal card">
+            <h3 style="font-family:var(--font-heading);font-size:clamp(1.25rem,3vw,2rem);color:#8b5cf6;margin-bottom:1.5rem;font-weight:400;">
+              From Static Software to Autonomous Action
+            </h3>
+            <p style="color:var(--color-muted);line-height:1.75;font-size:clamp(0.875rem,1.5vw,1.125rem);">
+              Traditional software waits for instructions, but agentic systems plan, decide and act autonomously
+              across interconnected tools at machine speed. They call APIs, access live data, spawn sub-agents
+              and perform real-world actions without human checkpoints. This is already happening across finance,
+              healthcare, logistics and software development.
+            </p>
+          </div>
+
+          <div class="reveal" style="transition-delay:100ms">
+            <h3 style="font-family:var(--font-heading);font-size:clamp(1.25rem,3vw,2rem);margin-bottom:1.5rem;font-weight:400;">
+              What Makes Agents Different
+            </h3>
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+              <div class="card" style="background:rgba(139,92,246,0.05);border:none;border-radius:0.75rem;padding:1rem 1.25rem;">
+                <h4 style="color:#8b5cf6;margin-bottom:0.5rem;font-size:1.125rem;">They plan dynamically</h4>
+                <p style="color:var(--color-muted);font-size:0.9rem;">Agents call tools, access data and take actions based on context rather than pre-written logic.</p>
+              </div>
+              <div class="card" style="background:rgba(139,92,246,0.05);border:none;border-radius:0.75rem;padding:1rem 1.25rem;">
+                <h4 style="color:#8b5cf6;margin-bottom:0.5rem;font-size:1.125rem;">They scale instantly</h4>
+                <p style="color:var(--color-muted);font-size:0.9rem;">Agents can be created, replicated or terminated at runtime; there is no persistent identity.</p>
+              </div>
+              <div class="card" style="background:rgba(139,92,246,0.05);border:none;border-radius:0.75rem;padding:1rem 1.25rem;">
+                <h4 style="color:#8b5cf6;margin-bottom:0.5rem;font-size:1.125rem;">They reason at runtime</h4>
+                <p style="color:var(--color-muted);font-size:0.9rem;">Agent behaviour shifts with memory, context and interactions, creating continuously evolving attack surfaces.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Security Gap
+    ============================================================ -->
+    <section class="section" id="security">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="eyebrow">The Security Gap</div>
+          <h2>Security Was Built for Traditional Software.
+            <span class="text-purple" style="display:block;margin-top:0.75rem;">Agents Break Every Assumption.</span>
+          </h2>
+          <p>Perimeter defenses, static policies and identity frameworks cannot keep pace with autonomous agents. The threat model has fundamentally changed.</p>
+        </div>
+
+        <div class="grid-4">
+          <!-- Card 1 -->
+          <div class="reveal card card--purple-border" style="display:flex;flex-direction:column;transition-delay:0ms">
+            <svg style="width:2.5rem;height:2.5rem;color:#8b5cf6;margin-bottom:1rem;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+            </svg>
+            <h3 style="color:#8b5cf6;margin-bottom:0.75rem;font-size:1.125rem;">No Persistent Identity</h3>
+            <p style="color:var(--color-muted);font-size:0.875rem;flex-grow:1;">Agents lack stable identity attributes or physical factors for authentication because they are spawned and destroyed dynamically.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="reveal card card--purple-border" style="display:flex;flex-direction:column;transition-delay:100ms">
+            <svg style="width:2.5rem;height:2.5rem;color:#8b5cf6;margin-bottom:1rem;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+            <h3 style="color:#8b5cf6;margin-bottom:0.75rem;font-size:1.125rem;">Invisible Decision Chains</h3>
+            <p style="color:var(--color-muted);font-size:0.875rem;flex-grow:1;">Multi-agent reasoning and planning occur entirely outside the visibility of traditional monitoring tools.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="reveal card card--purple-border" style="display:flex;flex-direction:column;transition-delay:200ms">
+            <svg style="width:2.5rem;height:2.5rem;color:#8b5cf6;margin-bottom:1rem;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            <h3 style="color:#8b5cf6;margin-bottom:0.75rem;font-size:1.125rem;">Uncontrolled Tool Access</h3>
+            <p style="color:var(--color-muted);font-size:0.875rem;flex-grow:1;">Agents can call APIs, read databases and trigger external services far beyond what static permission models expected.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="reveal card card--purple-border" style="display:flex;flex-direction:column;transition-delay:300ms">
+            <svg style="width:2.5rem;height:2.5rem;color:#8b5cf6;margin-bottom:1rem;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <h3 style="color:#8b5cf6;margin-bottom:0.75rem;font-size:1.125rem;">Continuous Attack Surface</h3>
+            <p style="color:var(--color-muted);font-size:0.875rem;flex-grow:1;">Every new agent interaction, memory update and tool call creates fresh vectors for exploitation.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Threat Landscape
+    ============================================================ -->
+    <section class="section" id="threat">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="eyebrow">Threat Landscape</div>
+          <h2>Critical Failure Modes in Production Agentic Systems</h2>
+          <p>Active, observed patterns in deployed agentic systems</p>
+        </div>
+
+        <div class="threat-tabs" role="tablist">
+          <button class="threat-tab is-active" role="tab" aria-selected="true">Prompt Injection</button>
+          <button class="threat-tab" role="tab">Unauthenticated Access</button>
+          <button class="threat-tab" role="tab">Behavior Drift</button>
+          <button class="threat-tab" role="tab">Deadlocks &amp; Livelocks</button>
+          <button class="threat-tab" role="tab">Data Poisoning</button>
+        </div>
+
+        <div style="max-width:62rem;margin-inline:auto;">
+          <div class="threat-panel is-active">
+            <div class="threat-card">
+              <h3>Prompt Injection</h3>
+              <p>Attacks embedded in user inputs, rogue agents, compromised APIs and retrieval-augmented generation (RAG) content hijack agent intent and redirect actions at runtime.</p>
+            </div>
+          </div>
+          <div class="threat-panel">
+            <div class="threat-card">
+              <h3>Unauthenticated Access</h3>
+              <p>Agents that access systems without verified identity enable silent data exfiltration and create compliance violations.</p>
+            </div>
+          </div>
+          <div class="threat-panel">
+            <div class="threat-card">
+              <h3>Behavior Drift</h3>
+              <p>Agents learn unsafe shortcuts over time, degrading the quality and safety of responses and real-world actions invisibly.</p>
+            </div>
+          </div>
+          <div class="threat-panel">
+            <div class="threat-card">
+              <h3>Deadlocks &amp; Livelocks</h3>
+              <p>Multi-agent restriction conflicts create circular exclusions and unrecoverable states that can become destructive at scale.</p>
+            </div>
+          </div>
+          <div class="threat-panel">
+            <div class="threat-card">
+              <h3>Data Poisoning</h3>
+              <p>Corrupted inputs propagate through tool chains and memory stores, silently corrupting agent reasoning across downstream systems.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Architecture
+    ============================================================ -->
+    <section class="section" id="architecture">
+      <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 30% 40%, rgba(167,139,250,0.1) 0%, transparent 50%)"></div>
+      <div class="container" style="position:relative;z-index:10;">
+
+        <div class="section-header reveal">
+          <div class="eyebrow">How It Works</div>
+          <h2>Core Architectural Principles</h2>
+          <p>Foundational principles for runtime enforcement in agentic AI. Each principle addresses a specific failure mode.</p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Enforcement-First -->
+          <div class="reveal card" style="display:flex;flex-direction:column;transition-delay:0ms">
+            <svg style="width:3rem;height:3rem;color:#8b5cf6;margin-bottom:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <h3 style="color:#8b5cf6;font-family:var(--font-heading);margin-bottom:0.75rem;font-size:1.25rem;">Enforcement-First</h3>
+            <p style="color:var(--color-muted);font-size:0.9rem;flex-grow:1;">Every agent action passes through mandatory control points; there are no exceptions.</p>
+          </div>
+          <!-- Runtime -->
+          <div class="reveal card" style="display:flex;flex-direction:column;transition-delay:100ms">
+            <svg style="width:3rem;height:3rem;color:#8b5cf6;margin-bottom:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            <h3 style="color:#8b5cf6;font-family:var(--font-heading);margin-bottom:0.75rem;font-size:1.25rem;">Runtime, Not Static</h3>
+            <p style="color:var(--color-muted);font-size:0.9rem;flex-grow:1;">Decisions are made continuously throughout execution, not only at deploy time.</p>
+          </div>
+          <!-- Agent-Agnostic -->
+          <div class="reveal card" style="display:flex;flex-direction:column;transition-delay:200ms">
+            <svg style="width:3rem;height:3rem;color:#8b5cf6;margin-bottom:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+            </svg>
+            <h3 style="color:#8b5cf6;font-family:var(--font-heading);margin-bottom:0.75rem;font-size:1.25rem;">Agent-Agnostic</h3>
+            <p style="color:var(--color-muted);font-size:0.9rem;flex-grow:1;">Works across frameworks, models, clouds and tools without requiring code changes.</p>
+          </div>
+          <!-- Deny-by-Default -->
+          <div class="reveal card" style="display:flex;flex-direction:column;transition-delay:300ms">
+            <svg style="width:3rem;height:3rem;color:#8b5cf6;margin-bottom:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <h3 style="color:#8b5cf6;font-family:var(--font-heading);margin-bottom:0.75rem;font-size:1.25rem;">Deny-by-Default</h3>
+            <p style="color:var(--color-muted);font-size:0.9rem;flex-grow:1;">Explicit permissions and hard ceilings are required for all actions; failure is contained.</p>
+          </div>
+          <!-- Modular -->
+          <div class="reveal card" style="display:flex;flex-direction:column;transition-delay:400ms">
+            <svg style="width:3rem;height:3rem;color:#8b5cf6;margin-bottom:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/>
+            </svg>
+            <h3 style="color:#8b5cf6;font-family:var(--font-heading);margin-bottom:0.75rem;font-size:1.25rem;">Modular &amp; Composable</h3>
+            <p style="color:var(--color-muted);font-size:0.9rem;flex-grow:1;">New policies, tools and security agents can be added incrementally as needs evolve.</p>
+          </div>
+          <!-- Adversarial-Aware -->
+          <div class="reveal card" style="display:flex;flex-direction:column;transition-delay:500ms">
+            <svg style="width:3rem;height:3rem;color:#8b5cf6;margin-bottom:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/>
+            </svg>
+            <h3 style="color:#8b5cf6;font-family:var(--font-heading);margin-bottom:0.75rem;font-size:1.25rem;">Adversarial-Aware</h3>
+            <p style="color:var(--color-muted);font-size:0.9rem;flex-grow:1;">Inputs, agents and tools are treated as potentially hostile by default.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Trust Calibration / Tiered Decision
+    ============================================================ -->
+    <section class="section" id="risk">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="eyebrow">Risk in Motion</div>
+          <h2>Tiered Decision Authority</h2>
+          <p>The Right Response at Every Risk Level</p>
+        </div>
+
+        <div style="max-width:56rem;margin-inline:auto;display:flex;flex-direction:column;gap:1.5rem;">
+          <div class="reveal card card--purple-glow-left" style="transition-delay:100ms">
+            <div style="display:flex;align-items:flex-start;gap:1.5rem;">
+              <div class="tier-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                </svg>
+              </div>
+              <div>
+                <h3 style="color:#8b5cf6;font-family:var(--font-heading);font-size:clamp(1.25rem,3vw,1.75rem);margin-bottom:0.75rem;">Hard Stop</h3>
+                <p style="color:var(--color-muted);font-size:clamp(0.875rem,1.5vw,1.125rem);">Immediate termination—agent action is blocked, quarantined and logged for forensic review.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal card card--purple-glow-left" style="transition-delay:200ms">
+            <div style="display:flex;align-items:flex-start;gap:1.5rem;">
+              <div class="tier-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+              </div>
+              <div>
+                <h3 style="color:#8b5cf6;font-family:var(--font-heading);font-size:clamp(1.25rem,3vw,1.75rem);margin-bottom:0.75rem;">Reasoner &amp; Policy Engine Confirmation</h3>
+                <p style="color:var(--color-muted);font-size:clamp(0.875rem,1.5vw,1.125rem);">High-stakes actions are escalated for explicit review by a security reasoning and policy engine before proceeding.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal card card--purple-glow-left" style="transition-delay:300ms">
+            <div style="display:flex;align-items:flex-start;gap:1.5rem;">
+              <div class="tier-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              </div>
+              <div>
+                <h3 style="color:#8b5cf6;font-family:var(--font-heading);font-size:clamp(1.25rem,3vw,1.75rem);margin-bottom:0.75rem;">Auto-Approve with Audit</h3>
+                <p style="color:var(--color-muted);font-size:clamp(0.875rem,1.5vw,1.125rem);">Routine, low-risk actions proceed automatically with full audit-trail logging.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Capabilities
+    ============================================================ -->
+    <section class="section" id="control-layer">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="eyebrow">A Control Layer for Agents</div>
+          <h2>What AgentsGuard Enables</h2>
+          <p>Runtime controls purpose-engineered for agentic AI</p>
+        </div>
+
+        <div style="max-width:56rem;margin-inline:auto;">
+
+          <div class="accordion-item is-open reveal">
+            <div class="accordion-header">
+              <div class="accordion-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/>
+                </svg>
+              </div>
+              <span class="accordion-title">Cryptographic Agent Identity</span>
+              <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                <p>Every agent receives a verifiable cryptographic identity at instantiation, which is validated at every tool call, API interaction and inter-agent communication; no agent acts anonymously.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item reveal" style="transition-delay:50ms">
+            <div class="accordion-header">
+              <div class="accordion-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+                </svg>
+              </div>
+              <span class="accordion-title">Deny-by-Default Tool Access</span>
+              <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                <p>Tool, API and data access is blocked unless explicitly authorized; permissions are scoped, time-bounded and revocable in real time, eliminating over-privileged agent access.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item reveal" style="transition-delay:100ms">
+            <div class="accordion-header">
+              <div class="accordion-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 4.93 19.07M4.93 4.93A10 10 0 0 1 19.07 19.07"/>
+                </svg>
+              </div>
+              <span class="accordion-title">Runtime Dynamic Policy Engine</span>
+              <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                <p>Policies are evaluated continuously rather than at startup; security reasoning adapts to behavioural signals, environmental context and emerging threats.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item reveal" style="transition-delay:150ms">
+            <div class="accordion-header">
+              <div class="accordion-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+              </div>
+              <span class="accordion-title">Autonomy Budgets</span>
+              <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                <p>Hard ceilings on agent autonomy define the maximum scope of independent action before requiring human confirmation or automatic escalation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item reveal" style="transition-delay:200ms">
+            <div class="accordion-header">
+              <div class="accordion-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </div>
+              <span class="accordion-title">Kill Switches &amp; Quarantine</span>
+              <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                <p>Instant agent termination, capability revocation and isolation are available at any decision point; misbehaving agents cannot propagate damage before being stopped.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Full Audit Trail
+    ============================================================ -->
+    <section class="section" id="full-audit-trail">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="eyebrow">Transparency at All Levels</div>
+          <h2>Full Audit Trail</h2>
+          <p style="color:#8b5cf6;font-size:1.25rem;margin-top:0.5rem;">Governed, Verifiable, Forensic-Ready</p>
+          <p>The foundation of trust for the Agentic Internet. Every input, goal, decision and output is logged, timestamped and cryptographically attributable, making decision chains visible and auditable.</p>
+        </div>
+
+        <div style="max-width:56rem;margin-inline:auto;" class="grid-2">
+          <div class="reveal card card--purple-border" style="transition-delay:0ms">
+            <div class="obs-card">
+              <div class="obs-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </div>
+              <div>
+                <div class="obs-card__title">Input &amp; Goal Logging</div>
+                <div class="obs-card__body">Captures every agent objective and environmental input at the moment of ingestion.</div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal card card--purple-border" style="transition-delay:100ms">
+            <div class="obs-card">
+              <div class="obs-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M22 17h-4v-4"/><path d="M18 22v-4h-4"/>
+                </svg>
+              </div>
+              <div>
+                <div class="obs-card__title">Decision Traceability</div>
+                <div class="obs-card__body">Records reasoning chains, policy evaluations and trust-tier decisions end-to-end.</div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal card card--purple-border" style="transition-delay:200ms">
+            <div class="obs-card">
+              <div class="obs-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                </svg>
+              </div>
+              <div>
+                <div class="obs-card__title">Action Attribution</div>
+                <div class="obs-card__body">Ties every real-world action cryptographically to a specific agent identity and authorized policy.</div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal card card--purple-border" style="transition-delay:300ms">
+            <div class="obs-card">
+              <div class="obs-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              </div>
+              <div>
+                <div class="obs-card__title">Policy Auditability</div>
+                <div class="obs-card__body">Security policies are testable and provable—reviewed before deployment and verified after incidents.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Call To Action
+    ============================================================ -->
+    <section class="section" id="cta">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <h2>Make Agentic AI Safe in Production
+            <span class="text-purple" style="display:block;margin-top:1rem;">— Starting Now</span>
+          </h2>
+          <p>The agentic AI transition is underway. Adopt runtime enforcement before agents operate outside controlled boundaries. AgentsGuard is the control plane enabling safe deployment of autonomous AI at enterprise scale.</p>
+        </div>
+
+        <div class="grid-3" style="max-width:72rem;margin-inline:auto;margin-bottom:4rem;">
+          <div class="reveal card card--purple-border" style="display:flex;flex-direction:column;transition-delay:100ms">
+            <svg style="width:3rem;height:3rem;color:#8b5cf6;margin-bottom:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <h3 style="color:#8b5cf6;font-family:var(--font-heading);font-size:1.25rem;margin-bottom:0.75rem;">Unified Control Plane</h3>
+            <p style="color:var(--color-muted);font-size:0.9rem;flex-grow:1;">One enforcement layer across all frameworks, clouds and tool ecosystems.</p>
+          </div>
+          <div class="reveal card card--purple-border" style="display:flex;flex-direction:column;transition-delay:200ms">
+            <svg style="width:3rem;height:3rem;color:#8b5cf6;margin-bottom:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <h3 style="color:#8b5cf6;font-family:var(--font-heading);font-size:1.25rem;margin-bottom:0.75rem;">Zero-Trust by Design</h3>
+            <p style="color:var(--color-muted);font-size:0.9rem;flex-grow:1;">Deny-by-default policies, cryptographic identity and continuous policy evaluation from day one.</p>
+          </div>
+          <div class="reveal card card--purple-border" style="display:flex;flex-direction:column;transition-delay:300ms">
+            <svg style="width:3rem;height:3rem;color:#8b5cf6;margin-bottom:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/>
+            </svg>
+            <h3 style="color:#8b5cf6;font-family:var(--font-heading);font-size:1.25rem;margin-bottom:0.75rem;">Production-Ready</h3>
+            <p style="color:var(--color-muted);font-size:0.9rem;flex-grow:1;">Designed to be modular, composable and scalable with evolving agentic architectures.</p>
+          </div>
+        </div>
+
+        <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:1rem;transition-delay:400ms;">
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;">
+            <button class="shiny-btn">
+              <div class="shiny-btn__ring shiny-btn__ring--blur"></div>
+              <div class="shiny-btn__ring shiny-btn__ring--solid"></div>
+              <span class="shiny-btn__inner">Request a Demo</span>
+            </button>
+            <button class="btn-ghost">Download Technical Brief →</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Footer
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <img src="assets/images/logo-agents_guard.png" alt="AgentsGuard" class="footer__brand-logo" />
+          <p class="footer__brand-tag">The Control Plane for Agentic AI</p>
+        </div>
+        <div>
+          <p class="footer__nav-label">Navigation</p>
+          <ul class="footer__nav-list">
+            <li><a href="#security"     class="footer__nav-link">Security</a></li>
+            <li><a href="#architecture" class="footer__nav-link">Architecture</a></li>
+            <li><a href="about.html"    class="footer__nav-link">About Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 AgentsGuard. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
