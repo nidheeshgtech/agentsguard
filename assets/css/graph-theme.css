@@ -513,7 +513,6 @@
 
 .ag-diagram .comp.tok-step .comp-title {
   /* color: var(--purple-bright); */
-  text-transform: uppercase;
   letter-spacing: .3px;
 }
 
