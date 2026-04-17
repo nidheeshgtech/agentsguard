@@ -2,11 +2,139 @@
    AgentsGuard – Main JavaScript
    ============================================================ */
 
+/* ============================================================
+   Demo Modal
+============================================================ */
+function openDemoModal() {
+  const modal = document.getElementById('demoModal');
+  if (modal) {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeDemoModal() {
+  const modal = document.getElementById('demoModal');
+  if (modal) {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const demoModal = document.getElementById('demoModal');
+  const demoModalOverlay = document.getElementById('demoModalOverlay');
+  const demoModalClose = document.getElementById('demoModalClose');
+
+  if (demoModal) {
+    demoModalOverlay?.addEventListener('click', closeDemoModal);
+    demoModalClose?.addEventListener('click', closeDemoModal);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && demoModal.classList.contains('is-open')) closeDemoModal();
+    });
+  }
+
+  const countrySelect = document.getElementById('demoCountry');
+  const phoneInput    = document.getElementById('demoPhone');
+
+  countrySelect?.addEventListener('change', function () {
+    this.classList.toggle('has-value', this.value !== '');
+  });
+
+  // Only allow digits
+  phoneInput?.addEventListener('keypress', e => {
+    if (!/[0-9]/.test(e.key)) e.preventDefault();
+  });
+
+  phoneInput?.addEventListener('input', function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+  });
+
+  function setError(id, msg) {
+    const input = document.getElementById(id);
+    if (!input) return;
+    input.classList.add('is-invalid');
+    let err = input.parentElement.querySelector('.field-error');
+    if (!err) {
+      err = document.createElement('span');
+      err.className = 'field-error';
+      input.parentElement.appendChild(err);
+    }
+    err.textContent = msg;
+  }
+
+  function clearError(id) {
+    const input = document.getElementById(id);
+    if (!input) return;
+    input.classList.remove('is-invalid');
+    input.parentElement.querySelector('.field-error')?.remove();
+  }
+
+  // Clear error on input
+  ['demoName', 'demoEmail', 'demoOrg', 'demoPhone'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', () => clearError(id));
+  });
+
+  document.getElementById('demoForm')?.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const name  = document.getElementById('demoName')?.value.trim();
+    const email = document.getElementById('demoEmail')?.value.trim();
+    const org   = document.getElementById('demoOrg')?.value.trim();
+    const phone = document.getElementById('demoPhone')?.value.trim();
+
+    // Clear all errors first
+    ['demoName', 'demoEmail', 'demoOrg', 'demoPhone'].forEach(clearError);
+
+    let valid = true;
+
+    if (!name) {
+      setError('demoName', 'Name is required.');
+      valid = false;
+    }
+
+    if (!email) {
+      setError('demoEmail', 'Email is required.');
+      valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('demoEmail', 'Enter a valid email address.');
+      valid = false;
+    }
+
+    if (!org) {
+      setError('demoOrg', 'Organisation is required.');
+      valid = false;
+    }
+
+    if (!phone) {
+      setError('demoPhone', 'Phone number is required.');
+      valid = false;
+    } else if (phone.length < 5) {
+      setError('demoPhone', 'Enter a valid phone number.');
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    const card = document.getElementById('demoModalCard');
+    card.innerHTML = `
+      <div style="text-align:center;padding:2rem 1rem;">
+        <svg style="width:3.5rem;height:3.5rem;color:#8b5cf6;margin:0 auto 1.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <h3 style="font-family:var(--font-heading);font-size:1.75rem;margin-bottom:0.75rem;">Request Received</h3>
+        <p style="color:var(--color-muted);margin-bottom:2rem;">Thank you! We'll be in touch shortly.</p>
+        <button onclick="closeDemoModal()" class="btn-ghost">Close</button>
+      </div>
+    `;
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* 1. Hamburger / Mobile Menu
   ------------------------------------------------------------ */
-  const hamburger  = document.querySelector('.hamburger');
+  const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
 
   if (hamburger && mobileMenu) {
@@ -28,12 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* 2. Threat Landscape Tabs
   ------------------------------------------------------------ */
-  const tabs   = document.querySelectorAll('.threat-tab');
+  const tabs = document.querySelectorAll('.threat-tab');
   const panels = document.querySelectorAll('.threat-panel');
 
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
-      tabs.forEach(t   => t.classList.remove('is-active'));
+      tabs.forEach(t => t.classList.remove('is-active'));
       panels.forEach(p => p.classList.remove('is-active'));
       tab.classList.add('is-active');
       if (panels[index]) panels[index].classList.add('is-active');

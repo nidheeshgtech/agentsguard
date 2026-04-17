@@ -789,6 +789,7 @@ ol {
   background: transparent;
   -webkit-appearance: none;
   appearance: none;
+
 }
 
 .shiny-btn__ring {
@@ -1377,4 +1378,192 @@ ol {
 
 .h-full {
   height: 100%;
+}
+
+/* ============================================================
+   Demo Request Modal
+============================================================ */
+.demo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.demo-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.demo-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.demo-modal__card {
+  position: relative;
+  z-index: 1;
+  background: rgba(10, 10, 20, 0.97);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 1.5rem;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.demo-modal.is-open .demo-modal__card {
+  transform: translateY(0) scale(1);
+}
+
+.demo-modal__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  color: var(--color-muted);
+  transition: color 0.2s;
+  padding: 0.25rem;
+  line-height: 0;
+}
+
+.demo-modal__close:hover {
+  color: #fff;
+}
+
+.demo-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.demo-modal__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 520px) {
+  .demo-modal__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.demo-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.demo-modal__field label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.demo-modal__field input,
+.demo-modal__field textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+  width: 100%;
+}
+
+.demo-modal__field input::placeholder,
+.demo-modal__field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.demo-modal__field input:focus,
+.demo-modal__field textarea:focus,
+.demo-modal__field select:focus {
+  border-color: rgba(139, 92, 246, 0.6);
+}
+
+.demo-modal__field input.is-invalid,
+.demo-modal__field textarea.is-invalid,
+.demo-modal__field select.is-invalid {
+  border-color: rgba(239, 68, 68, 0.7);
+}
+
+.field-error {
+  font-size: 0.75rem;
+  color: #f87171;
+  margin-top: 0.25rem;
+}
+
+.demo-modal__field select {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+}
+
+.demo-modal__field select.has-value {
+  color: #fff;
+}
+
+.demo-modal__field select option {
+  background: #0f0f1a;
+  color: #fff;
+}
+
+
+.demo-modal__form .shiny-btn {
+  display: flex;
+  margin: 0 auto;
+  transition: box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.demo-modal__form .shiny-btn:hover {
+  box-shadow: 0 0 18px rgb(48 29 93 / 50%), 0 0 60px rgb(63 43 107 / 20%);
+}
+
+.demo-modal__form .shiny-btn .shiny-btn__ring {
+  animation-duration: 4s;
+  transition: animation-duration 0.3s;
+}
+
+.demo-modal__form .shiny-btn:hover .shiny-btn__ring {
+  animation-duration: 0.8s;
+}
+
+.demo-modal__form .shiny-btn .shiny-btn__inner {
+  transition: background 0.3s ease;
+}
+
+.demo-modal__form .shiny-btn:hover .shiny-btn__inner {
+  background: rgba(20, 10, 40, 0.95);
 }
