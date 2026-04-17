@@ -1105,6 +1105,18 @@
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
+      <!-- Success state -->
+      <div id="demoSuccess" style="display:none;text-align:center;padding:2rem 1rem;">
+        <svg style="width:3.5rem;height:3.5rem;color:#8b5cf6;margin:0 auto 1.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <h3 style="font-family:var(--font-heading);font-size:1.75rem;margin-bottom:0.75rem;">Request Received</h3>
+        <p style="color:var(--color-muted);margin-bottom:2rem;">Thank you! We'll be in touch shortly.</p>
+        <button onclick="closeDemoModal()" class="btn-ghost">Close</button>
+      </div>
+
+      <!-- Form state -->
+      <div id="demoFormWrap">
       <h2 style="font-family:var(--font-heading);font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;">Request a Demo</h2>
       <form class="demo-modal__form" id="demoForm" novalidate>
         <div class="demo-modal__row">
@@ -1338,6 +1350,7 @@
           <span class="shiny-btn__inner">Submit Request</span>
         </button>
       </form>
+      </div><!-- /demoFormWrap -->
     </div>
   </div>
 

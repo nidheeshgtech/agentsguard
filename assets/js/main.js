@@ -18,6 +18,19 @@ function closeDemoModal() {
   if (modal) {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
+    // Reset form back to original state
+    const form = document.getElementById('demoForm');
+    const formWrap = document.getElementById('demoFormWrap');
+    const success = document.getElementById('demoSuccess');
+    if (form) {
+      form.reset();
+      form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+      form.querySelectorAll('.field-error').forEach(el => el.remove());
+      const countrySelect = document.getElementById('demoCountry');
+      if (countrySelect) countrySelect.classList.remove('has-value');
+    }
+    if (formWrap) formWrap.style.display = '';
+    if (success) success.style.display = 'none';
   }
 }
 
@@ -116,17 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!valid) return;
 
-    const card = document.getElementById('demoModalCard');
-    card.innerHTML = `
-      <div style="text-align:center;padding:2rem 1rem;">
-        <svg style="width:3.5rem;height:3.5rem;color:#8b5cf6;margin:0 auto 1.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-        </svg>
-        <h3 style="font-family:var(--font-heading);font-size:1.75rem;margin-bottom:0.75rem;">Request Received</h3>
-        <p style="color:var(--color-muted);margin-bottom:2rem;">Thank you! We'll be in touch shortly.</p>
-        <button onclick="closeDemoModal()" class="btn-ghost">Close</button>
-      </div>
-    `;
+    document.getElementById('demoFormWrap').style.display = 'none';
+    document.getElementById('demoSuccess').style.display = 'block';
   });
 });
 
